@@ -1,0 +1,6 @@
+DOMAIN = "genericmiot-vacuum-room-cleaner"
+CONF_ROOMS = "rooms"
+CONF_NAME = "name"
+CONF_ID = "id"
+CONF_IP = "ip"
+CONF_TOKEN = "token"
