@@ -19,6 +19,7 @@ Install from config directory via:
 ```bash
 git clone https://github.com/IvoLehn/genericmiot-vacuum-room-cleaner.git
 cd genericmiot-vacuum-room-cleaner
+sudo chmod +x ./install.sh
 ./install.sh
 cd ..
 rm -rf genericmiot-vacuum-room-cleaner
