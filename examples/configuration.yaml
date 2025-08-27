@@ -1,8 +1,3 @@
 genericmiot-vacuum-room-cleaner:
   ip: 192.168.1.50
   token: abc123securetoken
-  rooms:
-    - name: Living Room
-      id: 12
-    - name: Kitchen
-      id: 14

@@ -6,17 +6,12 @@ Home Assistant integration for Xiaomi GenericMiot vacuum devices. This integrati
 
 (only testet for Xiaomi Vacuum x20 max)
 
-Specify room ids and names as well as vacuum ip and token in configuration.yaml like:
+Specify vacuum ip and token in configuration.yaml like:
 
 ```yaml
 genericmiot-vacuum-room-cleaner:
   ip: 192.168.1.50
   token: abc123securetoken
-  rooms:
-    - name: Living Room
-      id: 12
-    - name: Kitchen
-      id: 14
 ```
 
 Install from config directory via:

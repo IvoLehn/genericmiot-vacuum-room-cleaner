@@ -1,15 +1,19 @@
 from homeassistant.components.button import ButtonEntity
 from .const import DOMAIN, CONF_ROOMS, CONF_NAME, CONF_ID, CONF_IP, CONF_TOKEN
 from miio import GenericMiot
+import json
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     integration_config = hass.data[DOMAIN]
     ip = integration_config.get(CONF_IP)
     token = integration_config.get(CONF_TOKEN)
-    rooms = integration_config.get(CONF_ROOMS, [])
+    
+    miot = GenericMiot(ip=ip, token=token)
+    rooms_value = miot.get_property_by(2, 16)[0].get("value")
+    rooms = json.loads(rooms_value).get("rooms", [])
 
     buttons = [
-        RoomCleanButton(room[CONF_NAME], room[CONF_ID], ip, token)
+        RoomCleanButton(room.get("name"), room.get("id"), ip, token)
         for room in rooms
     ]
     async_add_entities(buttons)
@@ -33,5 +37,4 @@ class RoomCleanButton(ButtonEntity):
         piid = 15
         params = [{"piid": piid, "value": f"[{self._room_id}]"}]
         cleaner.call_action_by(siid, aiid, params)
-        
         
